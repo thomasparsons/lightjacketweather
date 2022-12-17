@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
-import { Layout, Typography } from "antd";
-import "antd/dist/antd.css";
 
 const appName = "Light Jacket Weather";
 
@@ -33,18 +31,17 @@ export default ({ children, title }: Props) => {
   return (
     <>
       <Head>
-        <title>{`${appName}${title && ` | ${title}`}`}</title>
+        <title>{`${appName}${title ? ` | ${title}` : ""}`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={appName} />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        {/* this sets the color of url bar */}
-        <meta name="theme-color" content="#90cdf4" />
+        <link rel="icon" href="/icons/favicon.ico" />
+        <meta name="theme-color" content="#f6eeb5" />
       </Head>
 
-      <Layout.Content
+      <div
         style={{
-          backgroundColor: "#F6EEB5",
           display: "flex",
           flexDirection: "column",
           height: "100vh",
@@ -58,12 +55,12 @@ export default ({ children, title }: Props) => {
         ) : (
           <>
             <Image src="/logo.svg" width="100%" height="50vw" alt={appName} />
-            <Typography.Title style={{ fontSize: "6rem", margin: "2rem 0 0" }}>
+            <h1 style={{ fontSize: "6rem", margin: "2rem 0 0" }}>
               &#128161; &#129509; &#127782;
-            </Typography.Title>
+            </h1>
           </>
         )}
-      </Layout.Content>
+      </div>
     </>
   );
 };
